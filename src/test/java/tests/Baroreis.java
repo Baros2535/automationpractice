@@ -24,6 +24,16 @@ public class Baroreis {
     }
     @Test
     public void test1(){
+      // 1. Got to http://automationpractice.com/index.php
+
+      // 2. Click your item Add to chart
+
+      // 3. Click Proceed to checkout
+
+      // 4. Assert popup page’s total to checkout page’s total amount
+
+      // 5. Click proceed to checkout
+
 
     }
 
