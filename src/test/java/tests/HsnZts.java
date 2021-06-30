@@ -64,6 +64,8 @@ public class HsnZts {
 
         Thread.sleep(2500);
 
+        // 5. Click proceed to checkout
+        driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]/span")).click();
 
 
 
