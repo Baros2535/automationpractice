@@ -53,6 +53,19 @@ public class HsnZts {
 
         Thread.sleep(2500);
 
+        // 4. Assert popup page’s total to checkout page’s total amount
+        String popupTotal = driver.findElement(By.xpath("//*[@id=\"layer_cart_product_price\"]")).getText();
+
+
+
+        String checkoutTotal = driver.findElement(By.xpath("//*[@id=\"total_price\"]")).getText();
+
+        Assert.assertEquals(popupTotal, checkoutTotal);
+
+        Thread.sleep(2500);
+
+
+
 
 
     }
