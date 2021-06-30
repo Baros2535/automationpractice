@@ -1,8 +1,11 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import utilities.WebDriverFactory;
 
 public class Team1_TestCase1_Savas {
@@ -15,8 +18,33 @@ public class Team1_TestCase1_Savas {
     }
 
     @AfterMethod
-    public void tearDown()  {
-
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(3000);
         driver.quit();
+    }
+
+    @Test
+    public void test1() throws InterruptedException {
+        driver.get("http://automationpractice.com/index.php");
+
+        driver.findElement(By.xpath("//ul[@id='homefeatured']/li[@class='ajax_block_product col-xs-12 col-sm-4 col-md-3 first-in-line first-item-of-tablet-line first-item-of-mobile-line']//span[.='Add to cart']")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//div[@id='layer_cart']/div[1]/div[2]/div[4]/a/span")).click();
+
+
+        // //*[@id="layer_cart"]/div[1]/div[2]/div[3]/span
+        // //*[@id="total_price"]
+
+        String popUpPrice = driver.findElement(By.xpath("(//*[text() = '$18.51'])[2]")).getText();
+        System.out.println("popUpPrice = " + popUpPrice);
+        String checkOutPrice = driver.findElement(By.xpath("//*[@id='total_price']")).getText();
+        System.out.println("checkOutPrice = " + checkOutPrice);
+
+        Assert.assertEquals(popUpPrice,checkOutPrice,"Verify the text is the same");
+
+        driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]/span")).click();
+
+
+
     }
 }
