@@ -34,5 +34,16 @@ public class HsnZts {
         driver.quit();
     }
 
+    @Test
+    public void test1() throws InterruptedException {
 
+        // 1. Go to http://automationpractice.com/index.php
+        driver = WebDriverFactory.getDriver("chrome");
+        driver.get("http://automationpractice.com/index.php");
+
+        Thread.sleep(2500);
+
+
+
+    }
 }
