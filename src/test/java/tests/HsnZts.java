@@ -43,6 +43,11 @@ public class HsnZts {
 
         Thread.sleep(2500);
 
+// 2. Click your item Add to chart
+        driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[5]/div/div[2]/div[2]/a[1]/span")).click();
+
+        Thread.sleep(2500);
+
 
 
     }
