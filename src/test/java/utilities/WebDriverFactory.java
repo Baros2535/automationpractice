@@ -18,7 +18,7 @@ public class WebDriverFactory {
                 WebDriverManager.chromedriver().setup();
                 driver =new ChromeDriver();
                 break;
-            case " firefox":
+            case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 driver=new FirefoxDriver();
                 break;
