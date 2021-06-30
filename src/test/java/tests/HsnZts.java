@@ -25,20 +25,21 @@ public class HsnZts {
 
     @BeforeMethod
     public void setUp() {
+
         driver = WebDriverFactory.getDriver("chrome");
     }
 
     @AfterMethod
     public void tearDown() throws InterruptedException {
+
         Thread.sleep(2500);
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
     public void test1() throws InterruptedException {
 
         // 1. Go to http://automationpractice.com/index.php
-        driver = WebDriverFactory.getDriver("chrome");
         driver.get("http://automationpractice.com/index.php");
 
         Thread.sleep(2500);
@@ -48,17 +49,19 @@ public class HsnZts {
 
         Thread.sleep(2500);
 
+
+        String popupTotal = driver.findElement(By.xpath("//*[@id='layer_cart']/div[1]/div[2]/div[3]/span")).getText();
+        System.out.println("popupTotal = " + popupTotal);
+
         // 3. Click Proceed to checkout
         driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span")).click();
 
         Thread.sleep(2500);
 
         // 4. Assert popup page’s total to checkout page’s total amount
-        String popupTotal = driver.findElement(By.xpath("//*[@id=\"layer_cart_product_price\"]")).getText();
 
-
-
-        String checkoutTotal = driver.findElement(By.xpath("//*[@id=\"total_price\"]")).getText();
+        String checkoutTotal = driver.findElement(By.xpath("//*[@id='total_price']")).getText();
+        System.out.println("checkoutTotal = " + checkoutTotal);
 
         Assert.assertEquals(popupTotal, checkoutTotal);
 
@@ -66,7 +69,6 @@ public class HsnZts {
 
         // 5. Click proceed to checkout
         driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]/span")).click();
-
 
 
 
