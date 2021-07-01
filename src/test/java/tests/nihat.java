@@ -10,6 +10,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utilities.WebDriverFactory;
 
+import java.util.concurrent.TimeUnit;
+
 public class nihat {
 
     WebDriver driver;
@@ -18,6 +20,7 @@ public class nihat {
     public void beforeMethod() {
         driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
     }
 
     @Test
@@ -27,20 +30,28 @@ public class nihat {
         Actions builder= new Actions ( driver );
         WebElement hoverElement = driver.findElement ( By.xpath ( "(//div/a/img)[6] " ));
         builder.moveToElement ( hoverElement ).perform ();
-        driver.findElement ( By.cssSelector ( "#homefeatured [data-id-product='4'] > span" ) ).click ();
-        Thread.sleep ( 2000 );
-        driver.findElement ( By.xpath ( "(//div/a/span)[6]" ) ).click ();
 
-        // String expected = driver.findElement ( By.xpath ( "(//div/span)[16]" ) ).getText ();
-        String expected = "$52.99";
-        System.out.println (expected);
+        //add to chart
+        driver.findElement ( By.xpath ( "(//div[@class='button-container']/a)[8]" ) ).click ();
+
+        //innerText
+        WebElement expected1 = driver.findElement( By.xpath ( "//div[@class='layer_cart_row'][3]/span" ) );
+
+        Thread.sleep(3000);
+        String expected = expected1.getAttribute("innerText");
+
+
+        System.out.println(expected);
+
+        //proceed to checkout
+        driver.findElement ( By.xpath ( "(//div/a/span)[6]" ) ).click ();
 
         String actual =driver.findElement ( By.xpath ( "(//tr/td)[11]" ) ).getText ();
         System.out.println (actual);
 
         Assert.assertEquals ( actual,expected,"verify they are equal??" );
 
-        driver.findElement ( By.xpath ( "(//p/a/span)[2]" ) ).click ();
+        //driver.findElement ( By.xpath ( "(//p/a/span)[2]" ) ).click ();
 
 
 
