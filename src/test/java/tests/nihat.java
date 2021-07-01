@@ -34,7 +34,7 @@ public class nihat {
         //add to chart
         driver.findElement ( By.xpath ( "(//div[@class='button-container']/a)[8]" ) ).click ();
 
-
+        //innerText
         WebElement expected1 = driver.findElement( By.xpath ( "//div[@class='layer_cart_row'][3]/span" ) );
 
         Thread.sleep(3000);
