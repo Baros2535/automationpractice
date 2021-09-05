@@ -35,6 +35,7 @@ public class Team1TestCase1_Erhan {
         Assert.assertEquals(popupPrice,checkoutPrice,"verify text is same");
 
         driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]/span")).click();
+
     }
 
 
